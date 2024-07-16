@@ -1,4 +1,5 @@
 "use client";
+import acessaHistorico from "./api/historico";
 import styles from "./page.module.css";
 
 const perguntas = {
@@ -6,9 +7,8 @@ const perguntas = {
   id: 123,
 };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-  console.log(e);
+const handleSubmit = async (e) => {
+  await acessaHistorico(e.target)
 };
 
 export default function Home() {
@@ -25,7 +25,7 @@ export default function Home() {
           <input type="email"/>
           <br />
           <label>Matricula: </label>
-          <input type="numbers"></input>
+          <input type="number"></input>
           <br />
           <input type="submit" value="Enviar"></input>
         </form>
