@@ -1,8 +1,9 @@
 "use client";
-import Link from "next/link";
 import styles from "./page.module.css";
 import { useState } from "react";
 import acessaHistorico from "./api/historico";
+import { Router } from "next/router";
+import { routeModule } from "next/dist/build/templates/app-page";
 
 export default function Home() {
   const [matricula, atualizaMatricula] = useState('');
@@ -14,8 +15,11 @@ export default function Home() {
   const handleSubmit = async (e) => {
     console.log(matricula)
     acessaHistorico(matricula)
+    route
+
   };
 
+  
   return (
     <>
       <main className={styles.main}>
