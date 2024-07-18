@@ -6,7 +6,9 @@ export default async function acessaHistorico(matricula) {
       header : {
         'Content-type' : 'app/json'
       }
-    });
+    }).then((reposta) => {
+      console.log(resposta)
+    })
     console.log(resposta.json());
     return resposta.body.json();
   } catch (err) {
