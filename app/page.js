@@ -1,34 +1,35 @@
 "use client";
-import acessaHistorico from "./api/historico";
+import Link from "next/link";
 import styles from "./page.module.css";
-
-const perguntas = {
-  pergunta: "pergunta massa",
-  id: 123,
-};
-
-const handleSubmit = async (e) => {
-  await acessaHistorico(e.target)
-};
+import { useState } from "react";
+import acessaHistorico from "./api/historico";
 
 export default function Home() {
+  const [matricula, atualizaMatricula] = useState('');
+
+  const handleChange = (value) => {
+    atualizaMatricula(value)
+  }
+
+  const handleSubmit = async (e) => {
+    console.log(matricula)
+    acessaHistorico(matricula)
+  };
+
   return (
     <>
-      <header className={styles.head}>
-        Formulario SACCEEI <img src="/logoUFCG.png" height={60} width={60} />
-      </header>
       <main className={styles.main}>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <h2>Algumas informacoes importantes</h2>
-          <br />
-          <label>Email: </label>
-          <input type="email"/>
-          <br />
-          <label>Matricula: </label>
-          <input type="number"></input>
-          <br />
-          <input type="submit" value="Enviar"></input>
-        </form>
+        <div className={styles.form}>
+            <h3>Informações para gerar seu questionário</h3>
+            <br />
+            <label>Matricula: </label>
+            <input type="number" key="matricula" name="matricula" onChange={(e) => handleChange(e.target.value)}></input>
+            <br />
+            <br />
+            <div className={styles.buttons}>
+              <button className={styles.button} onClick={handleSubmit}>Enviar</button>
+            </div>
+        </div>
       </main>
     </>
   );

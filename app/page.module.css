@@ -17,16 +17,39 @@
 }
 
 .form {
-  border-style: solid;
-  border-width: 3px;
+  color: rgb(53, 53, 53);
+  flex-direction: column;
   border-color: grey;
-  border-radius: 4cap;
+  border-radius: 1cap;
   justify-content: center;
   align-items: center;
   align-self: auto;
   align-content: center;
-  background-color: darkgrey;
+  background-color: rgba(180, 199, 218, 0.548);
   padding: 2cap;
+  font-size: 150%;
+  box-shadow: 10px 10px 5px lightgrey;
+}
+
+.button {
+  justify-content: center;
+  align-self: auto;
+  margin: auto;
+  height: 100%;
+  width: auto;
+  padding: 2%;
+  background-color: cornflowerblue;
+  /*border-style: solid;*/
+  border-width: 0px;
+  border-radius: 0.5cap;
+  font-size: 80%;
+}
+
+.buttons {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
 }
 
 .description {
