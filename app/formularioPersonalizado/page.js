@@ -1,10 +1,16 @@
 "use client";
+import { useEffect } from "react";
+import styles from "./../page.module.css";
+
 export default function formsPessoal({ searchParams }) {
-  console.log(searchParams);
+  
+  useEffect(() => {});
 
-  const printa = () => {
-    console.log(searchParams);
-  };
-
-  return <button onClick={printa}>Clique neu</button>;
+  return (
+    <main className={styles.main}>
+      <div className={styles.form}>
+        <button className={styles.button}>Clique .</button>
+      </div>
+    </main>
+  );
 }
