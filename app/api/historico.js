@@ -1,4 +1,4 @@
-export default async function acessaHistorico(matricula) {
+export default async function acessaMatricula(matricula) {
   try {
     const resposta = await fetch(
       "http://127.0.0.1:8000/studentHistory/2023.2?registration=122210093",

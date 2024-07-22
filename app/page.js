@@ -2,6 +2,7 @@
 import styles from "./page.module.css";
 import { useState } from "react";
 import Link from "next/link";
+import acessaMatricula from "./api/historico";
 
 export default function Home() {
   const [matricula, atualizaMatricula] = useState("");
@@ -12,7 +13,7 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     console.log(matricula);
-    acessaMatricula(matricula);
+    acessaMatricula(matricula)
   };
 
   return (
@@ -31,6 +32,7 @@ export default function Home() {
         <br />
         <div className={styles.buttons}>
           <Link
+          className={styles.buttons}
             href={{
               pathname: "/formularioPersonalizado",
               query: {
