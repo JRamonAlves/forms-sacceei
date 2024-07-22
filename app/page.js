@@ -2,7 +2,7 @@
 import styles from "./page.module.css";
 import { useState } from "react";
 import Link from "next/link";
-import acessaMatricula from "./api/historico";
+import { confereMatricula } from "./api/confereMatricula";
 
 export default function Home() {
   const [matricula, atualizaMatricula] = useState("");
@@ -11,9 +11,9 @@ export default function Home() {
     atualizaMatricula(value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async () => {
     console.log(matricula);
-    acessaMatricula(matricula)
+    confereMatricula(matricula)
   };
 
   return (

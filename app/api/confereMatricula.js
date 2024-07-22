@@ -1,14 +1,22 @@
-export async function confereMatricula(matricula) {try {
-    const resposta = await fetch(
-      ("http://127.0.0.1:8000/studentHistory/2023.2?registration=" + matricula),
+import { Content } from "next/font/google";
+
+export async function confereMatricula(matricula) {
+  try {
+    await fetch(
+      "http://127.0.0.1:8000/studentHistory/2023.2?registration=" + matricula,
       {
         method: "GET",
-        mode: "no-cors",
+        mode: 'cors',
+        headers: {
+          'Content-type': 'application/json'
+        }
       }
-    );
-    console.log(resposta.ok)
-    console.log(resposta.json());
-    return resposta.body.json();
+    ).then(res => {
+      console.log(res.ok)
+    })
+
+    
+
   } catch (err) {
     console.error(err);
   }

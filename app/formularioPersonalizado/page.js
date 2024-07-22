@@ -1,11 +1,13 @@
 "use client";
 import { useEffect } from "react";
 import styles from "./../page.module.css";
+import { confereMatricula } from "../api/confereMatricula";
+import { Martel } from "next/font/google";
 
 export default function formsPessoal({ searchParams }) {
 
   const click = () => {
-    console.log(searchParams.matricula)
+    confereMatricula(searchParams.matricula)
   }
   
   useEffect(() => {});
