@@ -13,7 +13,7 @@ export default function Home() {
 
   const handleSubmit = async () => {
     console.log(matricula);
-    confereMatricula(matricula)
+    confereMatricula(matricula);
   };
 
   return (
@@ -32,7 +32,7 @@ export default function Home() {
         <br />
         <div className={styles.buttons}>
           <Link
-          className={styles.buttons}
+            className={styles.buttons}
             href={{
               pathname: "/formularioPersonalizado",
               query: {
