@@ -11,14 +11,9 @@ export default function Home() {
     atualizaMatricula(value);
   };
 
-  const handleSubmit = async () => {
-    console.log(matricula);
-    confereMatricula(matricula);
-  };
-
   return (
     <main className={styles.main}>
-      <div className={styles.form}>
+      <div className={styles.divmassa}>
         <h3>Informações para gerar seu questionário</h3>
         <br />
         <label>Matricula: </label>
@@ -40,9 +35,7 @@ export default function Home() {
               },
             }}
           >
-            <button className={styles.button} onClick={handleSubmit}>
-              Enviar
-            </button>
+            <button className={styles.button}>Enviar</button>
           </Link>
         </div>
       </div>
