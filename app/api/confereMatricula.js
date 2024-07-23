@@ -1,5 +1,3 @@
-import { Content } from "next/font/google";
-
 export async function confereMatricula(matricula) {
   try {
     await fetch(
@@ -13,7 +11,10 @@ export async function confereMatricula(matricula) {
       }
     ).then((res) => {
       console.log(res.ok);
-    });
+      return res.json()
+    }).then((body) =>
+      // console.log(body.subjects)
+    );
   } catch (err) {
     console.error(err);
   }

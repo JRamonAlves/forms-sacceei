@@ -15,7 +15,7 @@ export default function formsPessoal({ searchParams }) {
     <main className={styles.main}>
       <div className={styles.form}>
         <button className={styles.button} onClick={click}>
-          Clique .
+          Clique
         </button>
       </div>
     </main>
