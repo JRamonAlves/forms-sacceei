@@ -2,7 +2,6 @@
 import styles from "./page.module.css";
 import { useState } from "react";
 import Link from "next/link";
-import { confereMatricula } from "./api/confereMatricula";
 
 export default function Home() {
   const [matricula, atualizaMatricula] = useState("");
@@ -12,7 +11,7 @@ export default function Home() {
   };
 
   return (
-    <main className={styles.main}>
+    <form className={styles.main}>
       <div className={styles.divmassa}>
         <h3>Informações para gerar seu questionário</h3>
         <br />
@@ -22,7 +21,7 @@ export default function Home() {
           key="matricula"
           name="matricula"
           onChange={(e) => handleChange(e.target.value)}
-        ></input>
+        />
         <br />
         <br />
         <div className={styles.buttons}>
@@ -39,6 +38,6 @@ export default function Home() {
           </Link>
         </div>
       </div>
-    </main>
+    </form>
   );
 }

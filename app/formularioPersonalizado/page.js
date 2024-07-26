@@ -3,26 +3,28 @@ import { useEffect, useState } from "react";
 import styles from "./../page.module.css";
 import { confereMatricula } from "../api/confereMatricula";
 import { perguntas } from "./perguntas";
+import Formulario from "../components/formulario";
 
 export default function formsPessoal({ searchParams }) {
   const questions = perguntas;
+  const matricula = searchParams.matricula
   const [loading, changeLoading] = useState(true);
   const [erro, changeErro] = useState(false);
   const [cadeiras, changeCadeiras] = useState([]);
 
   useEffect(() => {
-    confereMatricula(searchParams.matricula).then((res) => {
+    confereMatricula(matricula).then((res) => {
       if (!res) {
         changeErro(true);
         changeLoading(false);
         return;
       }
 
-      const cursos = [];
+      const cursosArray = [];
       for (let index = 0; index < res.subjects.length; index++) {
-        cursos.push(res.subjects[index].name);
+        cursosArray.push(res.subjects[index].name);
       }
-      changeCadeiras(cursos);
+      changeCadeiras(cursosArray);
       changeLoading(false);
     });
   }, []);
@@ -39,9 +41,8 @@ export default function formsPessoal({ searchParams }) {
     return (
       <main className={styles.main}>
         <div className={styles.divmassa}>
-          {
-            "Sua matricula esta errada, ou o site esta fora do ar. Espere alguns momentos e tente de novo :)"
-          }
+          Sua matrícula está errada, ou o site esta fora do ar. Espere alguns
+          momentos e tente de novo.
         </div>
       </main>
     );
@@ -54,47 +55,11 @@ export default function formsPessoal({ searchParams }) {
         responda as seguintes questões:
       </div>
       <br />
-      <div className={styles.forms}>
-        <div className={styles.gridCadeiras}>
-          <label />
-          {cadeiras.map((value) => {
-            return <label>{value}</label>;
-          })}
-        </div>
-        {questions.map((value) => {
-          return (
-            <div className={styles.gridPerguntas}>
-              <label>{value.description}</label>
-              <label> </label>
-              {cadeiras.map(() => {
-                return (
-                  <div>
-                    <input type="radio" name="pergunta" value="sim" />
-                    <label>resposta</label>
-                    <br />
-
-                    <input type="radio" name="pergunta" value="sim" />
-                    <label>resposta</label>
-                    <br />
-
-                    <input type="radio" name="pergunta" value="sim" />
-                    <label>resposta</label>
-                    <br />
-
-                    <input type="radio" name="pergunta" value="sim" />
-                    <label>resposta</label>
-                    <br />
-
-                    <input type="radio" name="pergunta" value="sim" />
-                    <label>resposta</label>
-                    <br />
-                  </div>
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
+      <Formulario
+        cadeiras={cadeiras}
+        questions={questions}
+      />
+      <br />
     </main>
   );
 }
