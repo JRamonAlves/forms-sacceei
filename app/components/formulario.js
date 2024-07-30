@@ -55,19 +55,15 @@ export default function Formulario({
               <input type="radio" name={pergunta.id} value={5} />
               <label>Concordo muito</label>
               <br />
-
               <input type="radio" name={pergunta.id} value={4} />
               <label>Concordo</label>
               <br />
-
               <input type="radio" name={pergunta.id} value={3} required />
               <label>Não sei</label>
               <br />
-
               <input type="radio" name={pergunta.id} value={2} />
               <label>Discordo</label>
               <br />
-
               <input type="radio" name={pergunta.id} value={1} />
               <label>Discordo muito</label>
               <br />
@@ -78,9 +74,9 @@ export default function Formulario({
       })}
       <div className={styles.buttons}>
         <button onClick={backPage} className={styles.button}>
-          Botao
+          Voltar
         </button>
-        <input type="submit" value={"ENVIAR"} className={styles.button} />
+        <input type="submit" value={"Enviar"} className={styles.button} />
       </div>
     </form>
   );

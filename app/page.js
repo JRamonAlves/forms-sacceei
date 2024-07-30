@@ -31,7 +31,7 @@ export default function Home() {
           />
           <br />
           <br />
-          <div className={styles.buttons}>
+          <div className={styles.buttonsHome}>
             <input type="submit" className={styles.button} value="Enviar" />
           </div>
         </div>
