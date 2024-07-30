@@ -1,19 +1,17 @@
 "use client";
 import { useEffect, useState } from "react";
 import styles from "./../page.module.css";
-import { confereMatricula } from "../api/confereMatricula";
-import { perguntas } from "./perguntas";
 import Formulario from "../components/formulario";
+import { fetchCadeiras } from "../api/fetchCadeiras";
 
-export default function formsPessoal({ searchParams }) {
-  const questions = perguntas;
-  const matricula = searchParams.matricula
+export default function FormsPessoal({ matricula }) {
   const [loading, changeLoading] = useState(true);
   const [erro, changeErro] = useState(false);
   const [cadeiras, changeCadeiras] = useState([]);
+  const [indexCadeiras, changeIndex] = useState(0);
 
   useEffect(() => {
-    confereMatricula(matricula).then((res) => {
+    fetchCadeiras(matricula).then((res) => {
       if (!res) {
         changeErro(true);
         changeLoading(false);
@@ -22,8 +20,11 @@ export default function formsPessoal({ searchParams }) {
 
       const cursosArray = [];
       for (let index = 0; index < res.subjects.length; index++) {
-        cursosArray.push(res.subjects[index].name);
+        if (res.subjects[index].status !== "TRANCADO") {
+          cursosArray.push(res.subjects[index]);
+        }
       }
+
       changeCadeiras(cursosArray);
       changeLoading(false);
     });
@@ -57,7 +58,10 @@ export default function formsPessoal({ searchParams }) {
       <br />
       <Formulario
         cadeiras={cadeiras}
-        questions={questions}
+        matricula={matricula}
+        changeLoading={changeLoading}
+        changeIndexCadeiras={changeIndex}
+        index={indexCadeiras}
       />
       <br />
     </main>

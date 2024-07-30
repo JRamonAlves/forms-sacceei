@@ -1,43 +1,43 @@
 "use client";
 import styles from "./page.module.css";
 import { useState } from "react";
-import Link from "next/link";
+import FormsPessoal from "./formularioPersonalizado/page";
 
 export default function Home() {
-  const [matricula, atualizaMatricula] = useState("");
+  const [matricula, changeMatricula] = useState("");
+  const [respondeu, changeRespondeu] = useState(false);
 
-  const handleChange = (value) => {
-    atualizaMatricula(value);
+  const handleChange = (e) => {
+    changeMatricula(e.target.value);
   };
 
-  return (
-    <form className={styles.main}>
-      <div className={styles.divmassa}>
-        <h3>Informações para gerar seu questionário</h3>
-        <br />
-        <label>Matricula: </label>
-        <input
-          type="number"
-          key="matricula"
-          name="matricula"
-          onChange={(e) => handleChange(e.target.value)}
-        />
-        <br />
-        <br />
-        <div className={styles.buttons}>
-          <Link
-            className={styles.buttons}
-            href={{
-              pathname: "/formularioPersonalizado",
-              query: {
-                matricula: matricula,
-              },
-            }}
-          >
-            <button className={styles.button}>Enviar</button>
-          </Link>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    changeRespondeu(true);
+  };
+
+  if (!respondeu) {
+    return (
+      <form className={styles.main} onSubmit={handleSubmit}>
+        <div className={styles.divmassa}>
+          <h3>Informações para gerar seu questionário</h3>
+          <br />
+          <label>Matricula: </label>
+          <input
+            type="number"
+            key="matricula"
+            name="matricula"
+            onChange={handleChange}
+          />
+          <br />
+          <br />
+          <div className={styles.buttons}>
+            <input type="submit" className={styles.button} value="Enviar" />
+          </div>
         </div>
-      </div>
-    </form>
-  );
+      </form>
+    );
+  }
+
+  return <FormsPessoal matricula={matricula} />;
 }
