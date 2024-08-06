@@ -18,10 +18,10 @@ export default function Home() {
   if (!respondeu) {
     return (
       <form
-        className="container text-center bg-secondary-subtle border border-secondary-subtle rounded-5 mx-auto w-25"
+        className="container text-center bg-secondary-subtle border border-secondary-subtle rounded-5 p-4 mx-auto"
         onSubmit={handleSubmit}
       >
-        <label className="h4 mt-4 mb-3 mx-auto">Informações para gerar seu questionário</label>
+        <label className="h4">Informações para gerar seu questionário</label>
         <div className="form-floating mb-3 d-grid gap-1 col-4 mx-auto">
           <input
             className="form-control border border-secondary-subtle"

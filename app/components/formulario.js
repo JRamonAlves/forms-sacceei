@@ -20,7 +20,7 @@ export default function Formulario({
     data.forEach((value) => {
       answers.push(parseInt(value));
     });
-    console.log(answers)
+    console.log(answers);
     await postForm(
       matricula,
       String(cadeira.code),
@@ -116,14 +116,15 @@ export default function Formulario({
         );
       })}
       <div className="d-grid gap-5 d-md-flex mb-4">
-      <button onClick={backPage} className="btn btn-primary mx-auto">
-        Voltar
-      </button>
-      <input
-        type="submit"
-        value={"Enviar"}
-        className="btn btn-primary mx-auto"
-      /></div>
+        <button onClick={backPage} className="btn btn-primary mx-auto">
+          Voltar
+        </button>
+        <input
+          type="submit"
+          value={"Enviar"}
+          className="btn btn-primary mx-auto"
+        />
+      </div>
     </form>
   );
 }
