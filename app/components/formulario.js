@@ -35,9 +35,11 @@ export default function Formulario({
 
   const backPage = async (e) => {
     e.preventDefault();
-    changeIndexCadeiras(index - 1);
-    changeLoading(true);
-    changeLoading(false);
+    if (index > 0) {
+      changeIndexCadeiras(index - 1);
+      changeLoading(true);
+      changeLoading(false);
+    }
   };
 
   return (
@@ -58,6 +60,7 @@ export default function Formulario({
                   name={pergunta.id}
                   value={5}
                   id={pergunta.id + "5"}
+                  required
                 />
                 <label className="form-check-label" for={pergunta.id + "5"}>
                   Concordo muito
