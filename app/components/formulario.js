@@ -1,4 +1,3 @@
-import styles from "./../page.module.css";
 import { perguntas } from "../formularioPersonalizado/perguntas";
 import postForm from "../api/postForm";
 
@@ -19,9 +18,9 @@ export default function Formulario({
     const data = new FormData(e.target);
     const answers = [];
     data.forEach((value) => {
-      console.log(value, value.type);
       answers.push(parseInt(value));
     });
+    console.log(answers)
     await postForm(
       matricula,
       String(cadeira.code),
@@ -42,42 +41,89 @@ export default function Formulario({
   };
 
   return (
-    <form className={styles.forms} onSubmit={handleSubmit}>
-      <label>{cadeiras[index].name}</label>
-      <br />
-      <br />
+    <form
+      onSubmit={handleSubmit}
+      className="container vstack gap-4 bg-secondary-subtle border border-secondary-subtle rounded-5 mx-auto"
+    >
+      <div className="text-center h4 mt-3">{cadeiras[index].name}</div>
       {questions.map((pergunta) => {
         return (
-          <div key={pergunta.id}>
+          <div key={pergunta.id} className="vstack gap-1">
             <label>{pergunta.description}</label>
-            <br />
-            <div>
-              <input type="radio" name={pergunta.id} value={5} />
-              <label>Concordo muito</label>
-              <br />
-              <input type="radio" name={pergunta.id} value={4} />
-              <label>Concordo</label>
-              <br />
-              <input type="radio" name={pergunta.id} value={3} required />
-              <label>Não sei</label>
-              <br />
-              <input type="radio" name={pergunta.id} value={2} />
-              <label>Discordo</label>
-              <br />
-              <input type="radio" name={pergunta.id} value={1} />
-              <label>Discordo muito</label>
-              <br />
+            <div className="">
+              <div className="form-check">
+                <input
+                  className="form-check-input border border-secondary-subtle"
+                  type="radio"
+                  name={pergunta.id}
+                  value={5}
+                  id={pergunta.id + "5"}
+                />
+                <label className="form-check-label" for={pergunta.id + "5"}>
+                  Concordo muito
+                </label>
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input border border-secondary-subtle"
+                  type="radio"
+                  name={pergunta.id}
+                  value={4}
+                  id={pergunta.id + "4"}
+                />
+                <label className="form-check-label" for={pergunta.id + "4"}>
+                  Concordo
+                </label>
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input border border-secondary-subtle"
+                  type="radio"
+                  name={pergunta.id}
+                  value={3}
+                  id={pergunta.id + "3"}
+                />
+                <label className="form-check-label" for={pergunta.id + "3"}>
+                  Não sei
+                </label>
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input border border-secondary-subtle"
+                  type="radio"
+                  name={pergunta.id}
+                  value={2}
+                  id={pergunta.id + "2"}
+                />
+                <label className="form-check-label" for={pergunta.id + "2"}>
+                  Discordo
+                </label>
+              </div>
+              <div className="form-check">
+                <input
+                  className="form-check-input border border-secondary-subtle"
+                  type="radio"
+                  name={pergunta.id}
+                  value={1}
+                  id={pergunta.id + "1"}
+                />
+                <label className="form-check-label" for={pergunta.id + "1"}>
+                  Discordo muito
+                </label>
+              </div>
             </div>
-            <br />
           </div>
         );
       })}
-      <div className={styles.buttons}>
-        <button onClick={backPage} className={styles.button}>
-          Voltar
-        </button>
-        <input type="submit" value={"Enviar"} className={styles.button} />
-      </div>
+      <div className="d-grid gap-5 d-md-flex mb-4">
+      <button onClick={backPage} className="btn btn-primary mx-auto">
+        Voltar
+      </button>
+      <input
+        type="submit"
+        value={"Enviar"}
+        className="btn btn-primary mx-auto"
+      /></div>
     </form>
   );
 }

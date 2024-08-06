@@ -1,9 +1,9 @@
 .main {
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 6rem;
+  margin: auto;
 }
 
 .head {
@@ -37,6 +37,8 @@
   align-content: center;
   background-color: rgba(180, 199, 218, 0.548);
   padding: 2cap;
+  margin: auto;
+  width: 50%;
   font-size: 150%;
   box-shadow: 10px 10px 5px lightgrey;
 }

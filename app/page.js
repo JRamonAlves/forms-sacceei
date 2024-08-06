@@ -1,5 +1,4 @@
 "use client";
-import styles from "./page.module.css";
 import { useState } from "react";
 import FormsPessoal from "./formularioPersonalizado/page";
 
@@ -18,23 +17,26 @@ export default function Home() {
 
   if (!respondeu) {
     return (
-      <form className={styles.main} onSubmit={handleSubmit}>
-        <div className={styles.divmassa}>
-          <h3>Informações para gerar seu questionário</h3>
-          <br />
-          <label>Matricula: </label>
+      <form
+        className="container text-center bg-secondary-subtle border border-secondary-subtle rounded-5 mx-auto w-25"
+        onSubmit={handleSubmit}
+      >
+        <label className="h4 mt-4 mb-3 mx-auto">Informações para gerar seu questionário</label>
+        <div className="form-floating mb-3 d-grid gap-1 col-4 mx-auto">
           <input
+            className="form-control border border-secondary-subtle"
+            placeholder="00000000000"
             type="number"
             key="matricula"
             name="matricula"
             onChange={handleChange}
           />
-          <br />
-          <br />
-          <div className={styles.buttonsHome}>
-            <input type="submit" className={styles.button} value="Enviar" />
-          </div>
+          <label for="floatingInpul">Matricula</label>
         </div>
+        <div className="mx-auto">
+          <input type="submit" className="btn btn-primary" value="Enviar" />
+        </div>
+        <br />
       </form>
     );
   }

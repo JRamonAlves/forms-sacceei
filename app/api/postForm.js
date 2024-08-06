@@ -17,7 +17,7 @@ export default async function postForm(
       status: status,
       answers: answers,
     });
-    const resposta = await fetch("http://127.0.0.1:8000/studentAnswer/2023.2", {
+    const resposta = await fetch("http://sacceei.splab.ufcg.edu.br/studentAnswer/2023.2", {
       method: "POST",
       body: JSON.stringify({
         registration: registration,
