@@ -8,17 +8,8 @@ export default async function postForm(
   answers
 ) {
   try {
-    console.log({
-      registration: registration,
-      subjectCode: subjectCode,
-      classId: classId,
-      teacherCode: teacherCode,
-      grade: grade,
-      status: status,
-      answers: answers,
-    });
     const resposta = await fetch(
-      "http://sacceei.splab.ufcg.edu.br/studentAnswer/2023.2",
+      "http://sacceei.splab.ufcg.edu.br:8000/studentAnswer/2023.2",
       {
         method: "POST",
         body: JSON.stringify({

@@ -31,7 +31,7 @@ export default function Home() {
             name="matricula"
             onChange={handleChange}
           />
-          <label for="floatingInpul">Matricula</label>
+          <label htmlFor="floatingInpul">Matricula</label>
         </div>
         <div className="mx-auto">
           <input type="submit" className="btn btn-primary" value="Enviar" />

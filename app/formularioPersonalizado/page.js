@@ -70,7 +70,7 @@ export default function FormsPessoal({ matricula }) {
 
   return (
     <main className="container text-center bg-secondary-subtle border border-secondary-subtle rounded-5 mx-auto">
-      <div className="h5 mt-5 mb-5">Obrigado por responder ao nosso formulario!</div>
+      <div className="h5 m-5">Obrigado por responder ao nosso formulario!</div>
     </main>
   );
 }
