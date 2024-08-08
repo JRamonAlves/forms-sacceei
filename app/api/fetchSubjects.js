@@ -1,4 +1,4 @@
-export async function fetchCadeiras(matricula) {
+export async function fetchSubjects(matricula) {
   try {
     return await fetch(
       "http://sacceei.splab.ufcg.edu.br:8000/studentHistory/2023.2?registration=" + matricula,
@@ -10,7 +10,8 @@ export async function fetchCadeiras(matricula) {
         },
       }
     ).then((res) => {
-      return res.json()
+      if (res.ok) return res.json()
+      else return res.ok
     })
   } catch (err) {
     console.error(err);

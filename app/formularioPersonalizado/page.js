@@ -1,30 +1,28 @@
 "use client";
 import { useEffect, useState } from "react";
 import Formulario from "../components/formulario";
-import { fetchCadeiras } from "../api/fetchCadeiras";
+import { fetchSubjects } from "../api/fetchSubjects";
 
 export default function FormsPessoal({ matricula }) {
   const [loading, changeLoading] = useState(true);
-  const [erro, changeErro] = useState(false);
+  const [error, changeErro] = useState(false);
   const [cadeiras, changeCadeiras] = useState([]);
   const [indexCadeiras, changeIndex] = useState(0);
 
   useEffect(() => {
-    fetchCadeiras(matricula).then((res) => {
+    fetchSubjects(matricula).then((res) => {
       if (!res) {
         changeErro(true);
         changeLoading(false);
         return;
       }
 
-      const cursosArray = [];
-      for (let index = 0; index < res.subjects.length; index++) {
-        if (res.subjects[index].status !== "TRANCADO") {
-          cursosArray.push(res.subjects[index]);
-        }
-      }
-
-      changeCadeiras(cursosArray);
+      changeCadeiras(
+        res.subjects.filter((value) => {
+          return value.status !== "TRANCADO";
+        })
+      );
+      
       changeLoading(false);
     });
   }, []);
@@ -37,7 +35,7 @@ export default function FormsPessoal({ matricula }) {
     );
   }
 
-  if (erro) {
+  if (error) {
     return (
       <main className="container text-center bg-secondary-subtle border border-secondary-subtle rounded-5 mx-auto">
         <div className="h5 mt-5 mb-5">

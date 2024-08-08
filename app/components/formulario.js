@@ -46,17 +46,17 @@ export default function Formulario({
       onSubmit={handleSubmit}
       className="container vstack gap-4 bg-secondary-subtle border border-secondary-subtle rounded-5 mx-auto"
     >
-      <div className="text-center h4 mt-3">{cadeiras[index].name}</div>
+      <div className="text-center h4 mt-4">{cadeiras[index].name}</div>
       {questions.map((perguntas, index) => {
         return (
-          <>
-            <div className="text-center h6">Grupo de perguntas {index + 1}</div>
-            <div key={index} className="vstack gap-5">
+          <div>
+            <div className="text-center h6 mb-4">Grupo de perguntas {index + 1}</div>
+            <div key={index} className="vstack ps-4 gap-2">
               {perguntas.map((pergunta) => {
                 return (
-                  <div key={pergunta.id} className="vstack gap-1">
-                    <label>{pergunta.id + "." + pergunta.description}</label>
-                    <div className="vstack gap-0">
+                  <div key={pergunta.id} className="">
+                    <label className="form-label">{pergunta.id + "." + pergunta.description}</label>
+                    <div className="vstack pb-3">
                       <div className="form-check">
                         <input
                           className="form-check-input border border-secondary-subtle"
@@ -138,10 +138,10 @@ export default function Formulario({
                 );
               })}
             </div>
-          </>
+          </div>
         );
       })}
-      <div className="d-grid gap-5 d-md-flex mb-4">
+      <div className="d-grid d-md-flex mb-4">
         <button onClick={backPage} className="btn btn-primary mx-auto">
           Voltar
         </button>
